@@ -10,7 +10,7 @@ body{
   margin:0;
   height:100vh;
   background:
-    radial-gradient(circle at top,#fff5fa,#ffdbe9,#ffb8cf);
+    radial-gradient(circle at top,#fff7fb,#ffe3ef,#ffc1d6);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -18,29 +18,29 @@ body{
   font-family:'Playfair Display',serif;
 }
 
-/* BRILLO LEVE */
+/* BRILLO SUTIL */
 body::after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 40%),
-    radial-gradient(circle at 70% 60%,rgba(255,255,255,.25),transparent 45%);
+    radial-gradient(circle at 30% 15%,rgba(255,255,255,.4),transparent 45%),
+    radial-gradient(circle at 70% 65%,rgba(255,255,255,.25),transparent 50%);
   pointer-events:none;
 }
 
-/* CORAZONES LENTOS */
+/* CORAZONES MUY LENTOS */
 .heart{
   position:absolute;
-  color:#ff5c8a;
-  opacity:.35;
-  animation:floatUp 25s linear infinite;
-  font-size:18px;
+  color:#ff6f9c;
+  opacity:.25;
+  animation:floatUp 40s linear infinite;
+  font-size:16px;
 }
 
 @keyframes floatUp{
-  from{ transform:translateY(110vh); }
-  to{ transform:translateY(-120vh); }
+  from{ transform:translateY(120vh); }
+  to{ transform:translateY(-140vh); }
 }
 
 /* SOBRE */
@@ -49,27 +49,25 @@ body::after{
   height:170px;
   background:#fff;
   position:absolute;
-  border-radius:14px;
-  box-shadow:0 25px 50px rgba(0,0,0,.25);
+  border-radius:16px;
+  box-shadow:0 25px 45px rgba(255,105,180,.35);
   cursor:pointer;
-  animation:float 3s ease-in-out infinite;
+  animation:float 4s ease-in-out infinite;
   z-index:3;
 }
 
 #envelope::before{
   content:'';
   position:absolute;
-  width:100%;
-  height:100%;
+  inset:0;
   background:#ff9dbb;
   clip-path:polygon(0 0,100% 0,50% 55%);
-  border-radius:14px 14px 0 0;
+  border-radius:16px 16px 0 0;
 }
 
 @keyframes float{
-  0%{ transform:translateY(0); }
-  50%{ transform:translateY(-14px); }
-  100%{ transform:translateY(0); }
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
 }
 
 /* CARTA */
@@ -77,66 +75,88 @@ body::after{
   display:none;
   width:420px;
   max-height:80vh;
-  background:#fffafc;
-  padding:32px;
-  border-radius:18px;
+  background:#fffdfd;
+  padding:36px;
+  border-radius:22px;
   text-align:center;
-  box-shadow:0 40px 80px rgba(0,0,0,.28);
   overflow-y:auto;
   position:relative;
   z-index:2;
+
+  /* SOMBRA ROSADA */
+  box-shadow:
+    0 40px 80px rgba(255,105,180,.35),
+    0 0 0 1px rgba(255,182,193,.4);
+
+  /* ANIMACIÓN ENTRADA */
+  animation:cardIn .9s ease forwards;
 }
 
-/* RAMITOS SUAVES */
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* RAMITOS MÁS LIMPIOS */
 .decor{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  font-size:28px;
-  opacity:.6;
+  font-size:26px;
+  opacity:.45;
 }
-.left{ left:-55px; }
-.right{ right:-55px; }
+.left{ left:-45px; }
+.right{ right:-45px; }
 
 /* TEXTO */
 h1{
   font-family:'Great Vibes',cursive;
   color:#d6336c;
-  font-size:38px;
-  margin-bottom:18px;
+  font-size:40px;
+  margin-bottom:22px;
 }
 
 p{
   font-size:15px;
-  color:#444;
-  line-height:1.7;
+  color:#555;
+  line-height:1.8;
 }
 
 /* FLORES AL ABRIR */
 .flower{
   position:absolute;
-  font-size:22px;
-  animation:rise 6s linear infinite;
+  font-size:20px;
+  opacity:.6;
+  animation:rise 7s linear infinite;
 }
 
 @keyframes rise{
-  from{ transform:translateY(0); opacity:1; }
-  to{ transform:translateY(-120vh); opacity:0; }
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-130vh); }
 }
 </style>
 </head>
 
 <body>
 
+<!-- AUDIO PAPEL -->
+<audio id="paperSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2f8d0bfa42.mp3"></audio>
+
 <!-- CORAZONES DESDE EL INICIO -->
 <script>
-for(let i=0;i<20;i++){
+for(let i=0;i<14;i++){
   let h=document.createElement("div");
   h.className="heart";
   h.innerHTML="❤";
   h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=20+Math.random()*15+"s";
-  h.style.fontSize=14+Math.random()*14+"px";
+  h.style.animationDuration=35+Math.random()*20+"s";
+  h.style.fontSize=14+Math.random()*10+"px";
   document.body.appendChild(h);
 }
 </script>
@@ -146,8 +166,8 @@ for(let i=0;i<20;i++){
 
 <!-- CARTA -->
 <div id="card">
-  <div class="decor left">🌿🌸<br>🌷<br>🌹</div>
-  <div class="decor right">🌹<br>🌷<br>🌸🌿</div>
+  <div class="decor left">🌿🌸<br>🌷</div>
+  <div class="decor right">🌷<br>🌸🌿</div>
 
   <h1>Mi cachetona, feliz día de los enamorados ;3 ❤️</h1>
   <p>
@@ -182,18 +202,19 @@ Feliz San Valentín 🌹
 
 <script>
 function openLetter(){
+  document.getElementById("paperSound").play();
   document.getElementById("envelope").style.display="none";
   document.getElementById("card").style.display="block";
 
-  for(let i=0;i<25;i++){
+  for(let i=0;i<18;i++){
     let f=document.createElement("div");
     f.className="flower";
-    f.innerHTML=["🌸","🌹","💗","💐"][Math.floor(Math.random()*4)];
+    f.innerHTML=["🌸","🌹","💗"][Math.floor(Math.random()*3)];
     f.style.left=Math.random()*100+"vw";
     f.style.top="100vh";
-    f.style.animationDuration=3+Math.random()*4+"s";
+    f.style.animationDuration=5+Math.random()*4+"s";
     document.body.appendChild(f);
-    setTimeout(()=>f.remove(),7000);
+    setTimeout(()=>f.remove(),8000);
   }
 }
 </script>
