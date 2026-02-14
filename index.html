@@ -10,7 +10,7 @@ body{
   margin:0;
   height:100vh;
   background:
-    radial-gradient(circle at top,#fff0f6,#ffd6e5,#ffb3c6);
+    radial-gradient(circle at top,#fff5fa,#ffdbe9,#ffb8cf);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -18,16 +18,42 @@ body{
   font-family:'Playfair Display',serif;
 }
 
-/* SOBRE FLOTANTE */
+/* BRILLO LEVE */
+body::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 20%,rgba(255,255,255,.35),transparent 40%),
+    radial-gradient(circle at 70% 60%,rgba(255,255,255,.25),transparent 45%);
+  pointer-events:none;
+}
+
+/* CORAZONES LENTOS */
+.heart{
+  position:absolute;
+  color:#ff5c8a;
+  opacity:.35;
+  animation:floatUp 25s linear infinite;
+  font-size:18px;
+}
+
+@keyframes floatUp{
+  from{ transform:translateY(110vh); }
+  to{ transform:translateY(-120vh); }
+}
+
+/* SOBRE */
 #envelope{
   width:260px;
   height:170px;
   background:#fff;
   position:absolute;
-  border-radius:10px;
-  box-shadow:0 25px 45px rgba(0,0,0,.25);
+  border-radius:14px;
+  box-shadow:0 25px 50px rgba(0,0,0,.25);
   cursor:pointer;
   animation:float 3s ease-in-out infinite;
+  z-index:3;
 }
 
 #envelope::before{
@@ -37,11 +63,12 @@ body{
   height:100%;
   background:#ff9dbb;
   clip-path:polygon(0 0,100% 0,50% 55%);
+  border-radius:14px 14px 0 0;
 }
 
 @keyframes float{
   0%{ transform:translateY(0); }
-  50%{ transform:translateY(-15px); }
+  50%{ transform:translateY(-14px); }
   100%{ transform:translateY(0); }
 }
 
@@ -51,12 +78,13 @@ body{
   width:420px;
   max-height:80vh;
   background:#fffafc;
-  padding:30px;
-  border-radius:14px;
+  padding:32px;
+  border-radius:18px;
   text-align:center;
-  box-shadow:0 35px 65px rgba(0,0,0,.3);
+  box-shadow:0 40px 80px rgba(0,0,0,.28);
   overflow-y:auto;
   position:relative;
+  z-index:2;
 }
 
 /* RAMITOS SUAVES */
@@ -64,9 +92,8 @@ body{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  font-size:30px;
-  opacity:.75;
-  filter:drop-shadow(0 4px 6px rgba(0,0,0,.15));
+  font-size:28px;
+  opacity:.6;
 }
 .left{ left:-55px; }
 .right{ right:-55px; }
@@ -76,20 +103,20 @@ h1{
   font-family:'Great Vibes',cursive;
   color:#d6336c;
   font-size:38px;
-  margin-bottom:15px;
+  margin-bottom:18px;
 }
 
 p{
   font-size:15px;
   color:#444;
-  line-height:1.6;
+  line-height:1.7;
 }
 
-/* FLORES FLOTANDO */
+/* FLORES AL ABRIR */
 .flower{
   position:absolute;
   font-size:22px;
-  animation:rise 5s linear infinite;
+  animation:rise 6s linear infinite;
 }
 
 @keyframes rise{
@@ -101,9 +128,18 @@ p{
 
 <body>
 
-<!-- LACITOS SUTILES -->
-<div style="position:absolute;left:80px;top:120px;font-size:22px;opacity:.6;">🎀</div>
-<div style="position:absolute;right:90px;bottom:140px;font-size:22px;opacity:.6;">🎀</div>
+<!-- CORAZONES DESDE EL INICIO -->
+<script>
+for(let i=0;i<20;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=20+Math.random()*15+"s";
+  h.style.fontSize=14+Math.random()*14+"px";
+  document.body.appendChild(h);
+}
+</script>
 
 <!-- SOBRE -->
 <div id="envelope" onclick="openLetter()"></div>
@@ -113,7 +149,7 @@ p{
   <div class="decor left">🌿🌸<br>🌷<br>🌹</div>
   <div class="decor right">🌹<br>🌷<br>🌸🌿</div>
 
-  <h1>Mi cachetona, feliz día de los enamorados ;3 💗</h1>
+  <h1>Mi cachetona, feliz día de los enamorados ;3 ❤️</h1>
   <p>
 Hola mi bebe, si estas leyendo esto,<br>
 seguramente ya sea 14 de febrero y puesh<br><br>
@@ -149,15 +185,15 @@ function openLetter(){
   document.getElementById("envelope").style.display="none";
   document.getElementById("card").style.display="block";
 
-  for(let i=0;i<35;i++){
+  for(let i=0;i<25;i++){
     let f=document.createElement("div");
     f.className="flower";
     f.innerHTML=["🌸","🌹","💗","💐"][Math.floor(Math.random()*4)];
     f.style.left=Math.random()*100+"vw";
     f.style.top="100vh";
-    f.style.animationDuration=3+Math.random()*3+"s";
+    f.style.animationDuration=3+Math.random()*4+"s";
     document.body.appendChild(f);
-    setTimeout(()=>f.remove(),6000);
+    setTimeout(()=>f.remove(),7000);
   }
 }
 </script>
