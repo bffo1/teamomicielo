@@ -2,14 +2,15 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para mi bebe tiquita :3💗</title>
+<title>Para ti 💗</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   height:100vh;
-  background:#ffdbe6;
+  background:
+    radial-gradient(circle at top,#fff0f6,#ffd6e5,#ffb3c6);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -23,8 +24,8 @@ body{
   height:170px;
   background:#fff;
   position:absolute;
-  border-radius:8px;
-  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  border-radius:10px;
+  box-shadow:0 25px 45px rgba(0,0,0,.25);
   cursor:pointer;
   animation:float 3s ease-in-out infinite;
 }
@@ -51,29 +52,31 @@ body{
   max-height:80vh;
   background:#fffafc;
   padding:30px;
-  border-radius:12px;
+  border-radius:14px;
   text-align:center;
-  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  box-shadow:0 35px 65px rgba(0,0,0,.3);
   overflow-y:auto;
   position:relative;
 }
 
-/* RAMITOS */
+/* RAMITOS SUAVES */
 .decor{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  font-size:34px;
-  opacity:.9;
+  font-size:30px;
+  opacity:.75;
+  filter:drop-shadow(0 4px 6px rgba(0,0,0,.15));
 }
-.left{ left:-60px; }
-.right{ right:-60px; }
+.left{ left:-55px; }
+.right{ right:-55px; }
 
 /* TEXTO */
 h1{
   font-family:'Great Vibes',cursive;
   color:#d6336c;
   font-size:38px;
+  margin-bottom:15px;
 }
 
 p{
@@ -82,7 +85,7 @@ p{
   line-height:1.6;
 }
 
-/* FLORES */
+/* FLORES FLOTANDO */
 .flower{
   position:absolute;
   font-size:22px;
@@ -98,13 +101,17 @@ p{
 
 <body>
 
+<!-- LACITOS SUTILES -->
+<div style="position:absolute;left:80px;top:120px;font-size:22px;opacity:.6;">🎀</div>
+<div style="position:absolute;right:90px;bottom:140px;font-size:22px;opacity:.6;">🎀</div>
+
 <!-- SOBRE -->
 <div id="envelope" onclick="openLetter()"></div>
 
 <!-- CARTA -->
 <div id="card">
-  <div class="decor left">💐🎀🌸<br>🌷💗<br>🌹🎀</div>
-  <div class="decor right">🎀🌹<br>💗🌷<br>🎀💐</div>
+  <div class="decor left">🌿🌸<br>🌷<br>🌹</div>
+  <div class="decor right">🌹<br>🌷<br>🌸🌿</div>
 
   <h1>Mi cachetona, feliz día de los enamorados ;3 💗</h1>
   <p>
@@ -145,7 +152,7 @@ function openLetter(){
   for(let i=0;i<35;i++){
     let f=document.createElement("div");
     f.className="flower";
-    f.innerHTML=["🌸","🌹","💗","💐","🎀"][Math.floor(Math.random()*5)];
+    f.innerHTML=["🌸","🌹","💗","💐"][Math.floor(Math.random()*4)];
     f.style.left=Math.random()*100+"vw";
     f.style.top="100vh";
     f.style.animationDuration=3+Math.random()*3+"s";
