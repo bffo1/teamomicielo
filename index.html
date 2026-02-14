@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para ti 💗</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Para mi bebe tiquita :3💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -17,6 +17,47 @@ body{
   font-family:'Playfair Display',serif;
 }
 
+/* SOBRE FLOTANTE */
+#envelope{
+  width:260px;
+  height:170px;
+  background:#fff;
+  position:absolute;
+  border-radius:8px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+}
+
+#envelope::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ff9dbb;
+  clip-path:polygon(0 0,100% 0,50% 55%);
+}
+
+@keyframes float{
+  0%{ transform:translateY(0); }
+  50%{ transform:translateY(-15px); }
+  100%{ transform:translateY(0); }
+}
+
+/* CARTA */
+#card{
+  display:none;
+  width:420px;
+  max-height:80vh;
+  background:#fffafc;
+  padding:30px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,.25);
+  overflow-y:auto;
+  position:relative;
+}
+
 /* RAMITOS */
 .decor{
   position:absolute;
@@ -25,97 +66,48 @@ body{
   font-size:34px;
   opacity:.9;
 }
-.left{ left:40px; }
-.right{ right:40px; }
-
-/* SOBRE */
-#envelope{
-  width:300px;
-  height:200px;
-  background:#fff;
-  position:relative;
-  cursor:pointer;
-  border-radius:8px;
-  box-shadow:0 25px 45px rgba(0,0,0,.25);
-  overflow:hidden;
-}
-
-/* TAPA */
-#lid{
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:#ff9dbb;
-  clip-path:polygon(0 0,100% 0,50% 55%);
-  z-index:3;
-  transition:transform .8s ease;
-  transform-origin:top;
-}
-
-/* CARTA */
-#letter{
-  position:absolute;
-  bottom:-100%;
-  left:0;
-  width:100%;
-  height:100%;
-  background:#fffafc;
-  padding:25px;
-  text-align:center;
-  box-sizing:border-box;
-  transition:bottom 1s ease;
-  z-index:2;
-  overflow-y:auto;
-}
-
-.open #lid{
-  transform:rotateX(180deg);
-}
-
-.open #letter{
-  bottom:0;
-}
+.left{ left:-60px; }
+.right{ right:-60px; }
 
 /* TEXTO */
 h1{
   font-family:'Great Vibes',cursive;
   color:#d6336c;
-  font-size:36px;
-  margin-bottom:10px;
+  font-size:38px;
 }
 
 p{
   font-size:15px;
   color:#444;
-  line-height:1.5;
+  line-height:1.6;
 }
 
 /* FLORES */
 .flower{
   position:absolute;
   font-size:22px;
-  animation:float 5s linear infinite;
+  animation:rise 5s linear infinite;
 }
 
-@keyframes float{
-  0%{ transform:translateY(0); opacity:1; }
-  100%{ transform:translateY(-120vh); opacity:0; }
+@keyframes rise{
+  from{ transform:translateY(0); opacity:1; }
+  to{ transform:translateY(-120vh); opacity:0; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- RAMITOS -->
-<div class="decor left">💐🎀🌸<br>🌷💗<br>🌹🎀</div>
-<div class="decor right">🎀🌹<br>💗🌷<br>🎀💐</div>
-
 <!-- SOBRE -->
-<div id="envelope" onclick="openLetter()">
-  <div id="lid"></div>
-  <div id="letter">
-    <h1>Mi cachetona, feliz día de los enamorados ;3 💗</h1>
-    <p>
+<div id="envelope" onclick="openLetter()"></div>
+
+<!-- CARTA -->
+<div id="card">
+  <div class="decor left">💐🎀🌸<br>🌷💗<br>🌹🎀</div>
+  <div class="decor right">🎀🌹<br>💗🌷<br>🎀💐</div>
+
+  <h1>Mi cachetona, feliz día de los enamorados ;3 💗</h1>
+  <p>
 Hola mi bebe, si estas leyendo esto,<br>
 seguramente ya sea 14 de febrero y puesh<br><br>
 
@@ -142,14 +134,15 @@ Mi monita, mi niña bella,<br>
 te amo muchititito mi corazón, eres mi vida entera &lt;3<br><br>
 
 Feliz San Valentín 🌹
-    </p>
-  </div>
+  </p>
 </div>
 
 <script>
 function openLetter(){
-  document.getElementById("envelope").classList.add("open");
-  for(let i=0;i<30;i++){
+  document.getElementById("envelope").style.display="none";
+  document.getElementById("card").style.display="block";
+
+  for(let i=0;i<35;i++){
     let f=document.createElement("div");
     f.className="flower";
     f.innerHTML=["🌸","🌹","💗","💐","🎀"][Math.floor(Math.random()*5)];
