@@ -2,104 +2,146 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Para mi bebe tiquita :3 ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>Para ti 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+
 <style>
 body{
   margin:0;
   height:100vh;
+  background:#ffdbe6;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(135deg,#ffd1dc,#ffe6f0);
   overflow:hidden;
   font-family:'Playfair Display',serif;
 }
 
+/* RAMITOS */
+.decor{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:34px;
+  opacity:.9;
+}
+.left{ left:40px; }
+.right{ right:40px; }
+
+/* SOBRE */
 #envelope{
-  width:280px;
-  height:180px;
+  width:300px;
+  height:200px;
   background:#fff;
   position:relative;
   cursor:pointer;
-  border-radius:6px;
-  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  border-radius:8px;
+  box-shadow:0 25px 45px rgba(0,0,0,.25);
+  overflow:hidden;
 }
 
-#envelope::before{
-  content:'';
+/* TAPA */
+#lid{
   position:absolute;
-  top:0;
-  left:0;
   width:100%;
   height:100%;
   background:#ff9dbb;
-  clip-path:polygon(0 0,100% 0,50% 50%);
+  clip-path:polygon(0 0,100% 0,50% 55%);
+  z-index:3;
+  transition:transform .8s ease;
+  transform-origin:top;
 }
 
+/* CARTA */
 #letter{
   position:absolute;
-  top:10px;
-  left:10px;
-  width:260px;
-  height:160px;
+  bottom:-100%;
+  left:0;
+  width:100%;
+  height:100%;
   background:#fffafc;
-  padding:20px;
+  padding:25px;
   text-align:center;
-  transform:translateY(100%);
-  transition:.8s ease;
-  border-radius:4px;
+  box-sizing:border-box;
+  transition:bottom 1s ease;
+  z-index:2;
+  overflow-y:auto;
+}
+
+.open #lid{
+  transform:rotateX(180deg);
 }
 
 .open #letter{
-  transform:translateY(-120%);
+  bottom:0;
 }
 
+/* TEXTO */
 h1{
   font-family:'Great Vibes',cursive;
   color:#d6336c;
-  font-size:38px;
-  margin:10px 0;
+  font-size:36px;
+  margin-bottom:10px;
 }
 
 p{
-  font-size:16px;
+  font-size:15px;
   color:#444;
+  line-height:1.5;
 }
 
+/* FLORES */
 .flower{
   position:absolute;
-  font-size:24px;
-  animation:float 4s linear infinite;
+  font-size:22px;
+  animation:float 5s linear infinite;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-120vh);opacity:0;}
+  0%{ transform:translateY(0); opacity:1; }
+  100%{ transform:translateY(-120vh); opacity:0; }
 }
 </style>
 </head>
+
 <body>
 
+<!-- RAMITOS -->
+<div class="decor left">💐🎀🌸<br>🌷💗<br>🌹🎀</div>
+<div class="decor right">🎀🌹<br>💗🌷<br>🎀💐</div>
+
+<!-- SOBRE -->
 <div id="envelope" onclick="openLetter()">
+  <div id="lid"></div>
   <div id="letter">
-    <h1>Mi cachetona, feliz dia de los enamorados ;3 💗</h1>
+    <h1>Mi cachetona, feliz día de los enamorados ;3 💗</h1>
     <p>
-      Hola mi bebe, si estas leyendo esto, <br>
-      seguramente ya sea 14 de febrero y puesh <br><br>
-      hice que esto se mandara automaticamente,<br>
-      te amo mucho mi niña hermosa, no te das una idea de cuanta <br><br>
-      ilusion tengo de pasar nuestro primer San Valentin juntos, <br>
-      y obvio va a ser super lindo mi vida ;3. <br><br>
-      yo she que el proximo va a ser juntos mi amor, <br>
-      tenlo por seguro a esho, esta es una "minicarta" <br><br>
-      la que realmente hice corazòn seguramente te la mande yo <br>
-      esta es solo para recordarte lo mucho que te amo mi vida <br><br>
-      eres muy especial en mi vida mi amor y ojala pronto poder vernos mi vida <br>
-      cuando ese dìa llegue sere el niño mas feliz del mundo, hay dìas que no te digo <br><br>
-      pero sueño con que ese dia llegue y poder besarte, abrazarte, hacerte recordar lo mucho que te amo<3. <br>
-      Mi monita, mi niña bella, te amo muchititito mi corazon, eres mi vida entera <3 <br><br>
-      Feliz San Valentín 🌹
+Hola mi bebe, si estas leyendo esto,<br>
+seguramente ya sea 14 de febrero y puesh<br><br>
+
+hice que esto se mandara automaticamente,<br>
+te amo mucho mi niña hermosa, no te das una idea de cuanta<br><br>
+
+ilusión tengo de pasar nuestro primer San Valentín juntos,<br>
+y obvio va a ser super lindo mi vida ;3<br><br>
+
+yo she que el próximo va a ser juntos mi amor,<br>
+tenlo por seguro a esho, esta es una "minicarta"<br><br>
+
+la que realmente hice corazón seguramente te la mande yo,<br>
+esta es solo para recordarte lo mucho que te amo mi vida<br><br>
+
+eres muy especial en mi vida mi amor y ojalá pronto poder vernos mi vida,<br>
+cuando ese día llegue seré el niño más feliz del mundo<br><br>
+
+hay días que no te digo,<br>
+pero sueño con que ese día llegue y poder besarte, abrazarte,<br>
+hacerte recordar lo mucho que te amo &lt;3<br><br>
+
+Mi monita, mi niña bella,<br>
+te amo muchititito mi corazón, eres mi vida entera &lt;3<br><br>
+
+Feliz San Valentín 🌹
     </p>
   </div>
 </div>
@@ -107,10 +149,10 @@ p{
 <script>
 function openLetter(){
   document.getElementById("envelope").classList.add("open");
-  for(let i=0;i<25;i++){
+  for(let i=0;i<30;i++){
     let f=document.createElement("div");
     f.className="flower";
-    f.innerHTML=["🌸","🌹","❤️","💐"][Math.floor(Math.random()*4)];
+    f.innerHTML=["🌸","🌹","💗","💐","🎀"][Math.floor(Math.random()*5)];
     f.style.left=Math.random()*100+"vw";
     f.style.top="100vh";
     f.style.animationDuration=3+Math.random()*3+"s";
