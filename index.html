@@ -1,134 +1,223 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>San Valentín 💖</title>
+<meta charset="UTF-8">
+<title>Para mi bebe tiquita ;3 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:
+    radial-gradient(circle at top,#fff7fb,#ffe3ef,#ffc1d6);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  font-family:'Playfair Display',serif;
+}
 
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #ffe6ef, #ffb6c1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      font-family: Georgia, serif;
-    }
+/* BRILLO SUTIL */
+body::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 15%,rgba(255,255,255,.4),transparent 45%),
+    radial-gradient(circle at 70% 65%,rgba(255,255,255,.25),transparent 50%);
+  pointer-events:none;
+}
 
-    /* Fondo corazones */
-    .background-hearts span {
-      position: absolute;
-      bottom: -50px;
-      font-size: 18px;
-      opacity: 0.4;
-      animation: float 12s linear infinite;
-    }
+/* CORAZONES MUY LENTOS */
+.heart{
+  position:absolute;
+  color:#ff6f9c;
+  opacity:.25;
+  animation:floatUp 40s linear infinite;
+  font-size:16px;
+}
 
-    @keyframes float {
-      0% {
-        transform: translateY(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.4;
-      }
-      100% {
-        transform: translateY(-120vh);
-        opacity: 0;
-      }
-    }
+@keyframes floatUp{
+  from{ transform:translateY(120vh); }
+  to{ transform:translateY(-140vh); }
+}
 
-    /* Carta */
-    .card {
-      width: 420px;
-      max-height: 80vh;
-      background: white;
-      padding: 30px;
-      border-radius: 22px;
-      box-shadow:
-        0 25px 45px rgba(255, 105, 180, 0.4),
-        0 0 30px rgba(255, 182, 193, 0.6);
-      overflow-y: auto;
-      z-index: 2;
-      animation: appear 1.2s ease;
-    }
+/* SOBRE */
+#envelope{
+  width:260px;
+  height:170px;
+  background:#fff;
+  position:absolute;
+  border-radius:16px;
+  box-shadow:0 25px 45px rgba(255,105,180,.35);
+  cursor:pointer;
+  animation:float 4s ease-in-out infinite;
+  z-index:3;
+}
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
+#envelope::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:#ff9dbb;
+  clip-path:polygon(0 0,100% 0,50% 55%);
+  border-radius:16px 16px 0 0;
+}
 
-    .card h1 {
-      text-align: center;
-      color: #e75480;
-      font-family: "Brush Script MT", cursive;
-      font-size: 34px;
-      margin-bottom: 20px;
-    }
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
+}
 
-    .card p {
-      text-align: center;
-      line-height: 1.7;
-      color: #444;
-      margin-bottom: 15px;
-      font-size: 15px;
-    }
+/* CARTA */
+#card{
+  display:none;
+  width:420px;
+  max-height:80vh;
+  background:#fffdfd;
+  padding:36px;
+  border-radius:22px;
+  text-align:center;
+  overflow-y:auto;
+  position:relative;
+  z-index:2;
 
-    /* Scroll bonito */
-    .card::-webkit-scrollbar {
-      width: 6px;
-    }
+  /* SOMBRA ROSADA */
+  box-shadow:
+    0 40px 80px rgba(255,105,180,.35),
+    0 0 0 1px rgba(255,182,193,.4);
 
-    .card::-webkit-scrollbar-thumb {
-      background: #ff9eb5;
-      border-radius: 10px;
-    }
-  </style>
+  /* ANIMACIÓN ENTRADA */
+  animation:cardIn .9s ease forwards;
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.96);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* RAMITOS MÁS LIMPIOS */
+.decor{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:26px;
+  opacity:.45;
+}
+.left{ left:-45px; }
+.right{ right:-45px; }
+
+/* TEXTO */
+h1{
+  font-family:'Great Vibes',cursive;
+  color:#d6336c;
+  font-size:40px;
+  margin-bottom:22px;
+}
+
+p{
+  font-size:15px;
+  color:#555;
+  line-height:1.8;
+}
+
+/* FLORES AL ABRIR */
+.flower{
+  position:absolute;
+  font-size:20px;
+  opacity:.6;
+  animation:rise 7s linear infinite;
+}
+
+@keyframes rise{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-130vh); }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Corazones -->
-  <div class="background-hearts">
-    <span style="left:5%; animation-delay:0s;">💗</span>
-    <span style="left:15%; animation-delay:2s;">💕</span>
-    <span style="left:30%; animation-delay:4s;">💖</span>
-    <span style="left:45%; animation-delay:1s;">💘</span>
-    <span style="left:60%; animation-delay:3s;">💓</span>
-    <span style="left:75%; animation-delay:5s;">💞</span>
-    <span style="left:90%; animation-delay:2.5s;">💗</span>
-  </div>
+<!-- AUDIO PAPEL -->
+<audio id="paperSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_2f8d0bfa42.mp3"></audio>
 
-  <!-- Carta -->
-  <div class="card">
-    <h1>Mi cachetona, feliz día de los enamorados :3 ❤️</h1>
+<!-- CORAZONES DESDE EL INICIO -->
+<script>
+for(let i=0;i<14;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=35+Math.random()*20+"s";
+  h.style.fontSize=14+Math.random()*10+"px";
+  document.body.appendChild(h);
+}
+</script>
 
-    <p>Hola mi bebe, si estas leyendo esto, seguramente ya sea 14 de febrero y pues hice que esto se mandara automáticamente.</p>
+<!-- SOBRE -->
+<div id="envelope" onclick="openLetter()"></div>
 
-    <p>Te amo mucho mi niña hermosa, no te das una idea de cuanta ilusión tengo de pasar nuestro primer San Valentín juntos, y obvio va a ser super lindo mi vida.</p>
+<!-- CARTA -->
+<div id="card">
+  <div class="decor left">🌿🌸<br>🌷</div>
+  <div class="decor right">🌷<br>🌸🌿</div>
 
-    <p>Yo sé que el próximo va a ser juntos mi amor, tenlo por seguro a eso, esta es una “mini carta”.</p>
+  <h1>Mi cachetona, feliz día de los enamorados ;3 ❤️</h1>
+  <p>
+Hola mi bebe, si estas leyendo esto,<br>
+seguramente ya sea 14 de febrero y puesh<br><br>
 
-    <p>La que realmente hice con corazón seguramente te la mande yo, esta es solo para recordarte lo mucho que te amo mi vida.</p>
+hice que esto se mandara automaticamente,<br>
+te amo mucho mi niña hermosa, no te das una idea de cuanta<br><br>
 
-    <p>Eres muy especial en mi vida mi amor y ojalá pronto poder vernos mi vida.</p>
+ilusión tengo de pasar nuestro primer San Valentín juntos,<br>
+y obvio va a ser super lindo mi vida ;3<br><br>
 
-    <p>Cuando ese día llegue seré el niño más feliz del mundo.</p>
+yo she que el próximo va a ser juntos mi amor,<br>
+tenlo por seguro a esho, esta es una "minicarta"<br><br>
 
-    <p>Hay días que no te lo digo, pero sueño con que ese día llegue y poder besarte, abrazarte, y hacerte recordar lo mucho que te amo &lt;3</p>
-  </div>
+la que realmente hice corazón seguramente te la mande yo,<br>
+esta es solo para recordarte lo mucho que te amo mi vida<br><br>
+
+eres muy especial en mi vida mi amor y ojalá pronto poder vernos mi vida,<br>
+cuando ese día llegue seré el niño más feliz del mundo<br><br>
+
+hay días que no te digo,<br>
+pero sueño con que ese día llegue y poder besarte, abrazarte,<br>
+hacerte recordar lo mucho que te amo &lt;3<br><br>
+
+Mi monita, mi niña bella,<br>
+te amo muchititito mi corazón, eres mi vida entera &lt;3<br><br>
+
+Feliz San Valentín 🌹
+  </p>
+</div>
+
+<script>
+function openLetter(){
+  document.getElementById("paperSound").play();
+  document.getElementById("envelope").style.display="none";
+  document.getElementById("card").style.display="block";
+
+  for(let i=0;i<18;i++){
+    let f=document.createElement("div");
+    f.className="flower";
+    f.innerHTML=["🌸","🌹","💗"][Math.floor(Math.random()*3)];
+    f.style.left=Math.random()*100+"vw";
+    f.style.top="100vh";
+    f.style.animationDuration=5+Math.random()*4+"s";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),8000);
+  }
+}
+</script>
 
 </body>
 </html>
